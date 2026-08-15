@@ -13,7 +13,7 @@ import { fetchNotes } from "@/lib/api";
 import css from "./NotesPage.module.css";
 
 export default function NotesClient() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
