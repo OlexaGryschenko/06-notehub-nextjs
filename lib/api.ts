@@ -67,6 +67,6 @@ export const deleteNote = async (id: string): Promise<Note> => {
 // для отримання деталей нотатки за ідентифікатором.
 
 export async function fetchNoteById(id: string): Promise<Note> {
-  const response = await axios.get<Note>(`/notes/${id}`);
+  const response = await api.get<Note>(`/notes/${id}`);
   return response.data;
 }

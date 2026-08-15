@@ -1,5 +1,12 @@
 import axios from 'axios';
-import type { Note, NotesResponse } from "@/types/note";
+import type { Note } from "@/types/note";
+
+export interface NotesResponse {
+  notes: Note[];
+  totalPages: number;
+  page: number;
+  perPage: number;
+}
 
 
 // ++++++++++++++  GET +++++++++++++++++++

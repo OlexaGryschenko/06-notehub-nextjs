@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 
-//  commune style 
+//  end commune style 
 
 
 export default function RootLayout({
@@ -35,13 +35,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-
-        <Header/>
 <TanStackProvider>
-        <main>{children}</main>
-</TanStackProvider>
-        <Footer/>
+        <Header/>
 
+        <main>{children}</main>
+
+        <Footer/>
+</TanStackProvider>
       </body>
     </html>
   );
