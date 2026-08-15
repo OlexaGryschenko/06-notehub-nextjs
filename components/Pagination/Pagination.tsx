@@ -4,8 +4,7 @@
 
 import ReactPaginate from "react-paginate";
 
-import css from '@/components/Pagination/Pagination.module.css'
-
+import css from "@/components/Pagination/Pagination.module.css";
 
 interface PaginationProps {
   pageCount: number;
@@ -13,13 +12,18 @@ interface PaginationProps {
   forcePage: number;
 }
 
-export default function Pagination({ pageCount, onPageChange, forcePage }: PaginationProps) {
+export default function Pagination({
+  pageCount,
+  onPageChange,
+  forcePage,
+}: PaginationProps) {
   if (!pageCount || pageCount <= 1) {
     return null;
   }
 
   return (
-    <ReactPaginate className={css.pagination}
+    <ReactPaginate
+      className={css.pagination}
       breakLabel="..."
       nextLabel="next >"
       onPageChange={onPageChange}

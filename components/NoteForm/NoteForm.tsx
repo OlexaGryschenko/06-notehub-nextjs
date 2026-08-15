@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createNote, type NewNote } from   "@/services/noteService";
-import css from './NoteForm.module.css';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createNote, type NewNote } from "@/services/noteService";
+import css from "./NoteForm.module.css";
 import * as Yup from "yup";
 
 interface NoteFormProps {
@@ -10,14 +10,16 @@ interface NoteFormProps {
 
 const NoteValidationSchema = Yup.object().shape({
   title: Yup.string()
-    .min(3, 'Мінімум 3 символи')
-    .max(50, 'Максимум 50 символів')
-    .required('Обовʼязкове поле'),
-  content: Yup.string()
-    .max(500, 'Максимум 500 символів'),
+    .min(3, "Мінімум 3 символи")
+    .max(50, "Максимум 50 символів")
+    .required("Обовʼязкове поле"),
+  content: Yup.string().max(500, "Максимум 500 символів"),
   tag: Yup.string()
-    .oneOf(['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'], 'Некоректний тег')
-    .required('Обовʼязкове поле'),
+    .oneOf(
+      ["Todo", "Work", "Personal", "Meeting", "Shopping"],
+      "Некоректний тег",
+    )
+    .required("Обовʼязкове поле"),
 });
 
 export const NoteForm = ({ onClose }: NoteFormProps) => {
@@ -26,19 +28,19 @@ export const NoteForm = ({ onClose }: NoteFormProps) => {
   const mutation = useMutation({
     mutationFn: (newNote: NewNote) => createNote(newNote),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['notes'] });
+      queryClient.invalidateQueries({ queryKey: ["notes"] });
       onClose();
     },
   });
 
   const initialValues: NewNote = {
-    title: '',
-    content: '',
-    tag: 'Work'
+    title: "",
+    content: "",
+    tag: "Work",
   };
 
   return (
-    <Formik 
+    <Formik
       initialValues={initialValues}
       validationSchema={NoteValidationSchema}
       onSubmit={(values) => {
@@ -54,7 +56,13 @@ export const NoteForm = ({ onClose }: NoteFormProps) => {
 
         <div className={css.formGroup}>
           <label htmlFor="content">Content</label>
-          <Field as="textarea" id="content" name="content" rows={8} className={css.textarea} />
+          <Field
+            as="textarea"
+            id="content"
+            name="content"
+            rows={8}
+            className={css.textarea}
+          />
           <ErrorMessage name="content" component="span" className={css.error} />
         </div>
 

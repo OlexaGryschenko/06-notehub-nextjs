@@ -1,6 +1,6 @@
 // app/notes/error.tsx
 
-'use client';
+"use client";
 
 type Props = {
   error: Error;
@@ -15,6 +15,6 @@ const Error = ({ error, reset }: Props) => {
       <button onClick={reset}>Спробувати знову</button>
     </div>
   );
-}
+};
 
 export default Error;
