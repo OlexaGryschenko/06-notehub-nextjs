@@ -53,13 +53,13 @@ export default function NotesClient() {
         {isLoading ? (
           <p>Loading notes...</p>
         ) : (
-          <>
-            <NoteList notes={response?.notes || []} />
-            <Pagination
+          <><Pagination
               pageCount={response?.totalPages || 1}
               onPageChange={handlePageChange}
               forcePage={currentPage - 1}
             />
+            <NoteList notes={response?.notes || []} />
+            
           </>
         )}
 
